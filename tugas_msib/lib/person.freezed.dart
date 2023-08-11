@@ -21,7 +21,8 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Person {
   String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $PersonCopyWith<$Res> {
   factory $PersonCopyWith(Person value, $Res Function(Person) then) =
       _$PersonCopyWithImpl<$Res, Person>;
   @useResult
-  $Res call({String name, int age});
+  $Res call({String name, int id, String email});
 }
 
 /// @nodoc
@@ -50,17 +51,22 @@ class _$PersonCopyWithImpl<$Res, $Val extends Person>
   @override
   $Res call({
     Object? name = null,
-    Object? age = null,
+    Object? id = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -71,7 +77,7 @@ abstract class _$$_PersonCopyWith<$Res> implements $PersonCopyWith<$Res> {
       __$$_PersonCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int age});
+  $Res call({String name, int id, String email});
 }
 
 /// @nodoc
@@ -85,17 +91,22 @@ class __$$_PersonCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? age = null,
+    Object? id = null,
+    Object? email = null,
   }) {
     return _then(_$_Person(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -103,7 +114,7 @@ class __$$_PersonCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Person implements _Person {
-  const _$_Person({required this.name, required this.age});
+  const _$_Person({required this.name, required this.id, required this.email});
 
   factory _$_Person.fromJson(Map<String, dynamic> json) =>
       _$$_PersonFromJson(json);
@@ -111,12 +122,13 @@ class _$_Person implements _Person {
   @override
   final String name;
   @override
-  @JsonKey()
-  final int age;
+  final int id;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'Person(name: $name, age: $age)';
+    return 'Person(name: $name, id: $id, email: $email)';
   }
 
   @override
@@ -125,12 +137,13 @@ class _$_Person implements _Person {
         (other.runtimeType == runtimeType &&
             other is _$_Person &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.age, age) || other.age == age));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, age);
+  int get hashCode => Object.hash(runtimeType, name, id, email);
 
   @JsonKey(ignore: true)
   @override
@@ -147,15 +160,19 @@ class _$_Person implements _Person {
 }
 
 abstract class _Person implements Person {
-  const factory _Person({required final String name, required final int age}) =
-      _$_Person;
+  const factory _Person(
+      {required final String name,
+      required final int id,
+      required final String email}) = _$_Person;
 
   factory _Person.fromJson(Map<String, dynamic> json) = _$_Person.fromJson;
 
   @override
   String get name;
   @override
-  int get age;
+  int get id;
+  @override
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$_PersonCopyWith<_$_Person> get copyWith =>
